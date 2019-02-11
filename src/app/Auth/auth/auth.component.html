@@ -1,0 +1,13 @@
+<button (click)="toggle()">
+    {{ this.signUp === false ? 'Need an account? Sign up' : 'I already have an account' }}
+</button>
+<div *ngIf="signUp === false; else signupBlock">
+    <app-login (loginOccured)="onAuth()"></app-login>
+    <!-- listen for log in -->
+</div>
+<ng-template #signupBlock>
+    <div>
+        <app-signup (signUpOccured)="onAuth()"></app-signup>
+        <!-- listen for sign up -->
+    </div>
+</ng-template>
